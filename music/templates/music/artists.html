@@ -1,0 +1,26 @@
+{% extends "./index.html" %}
+
+{% block content %}
+<h2>Get tracks released by a specific artist</h2>
+<div class='feature_details'>
+    <h3>API Structure</h3>
+    <p><strong>GET /api/tracks/artist/[artist_name]</strong></p>
+    <h3>About the API</h3>
+    <p>This API returns a list of all tracks created by an artist, sorted in descending order of its release date. Only
+        the track's name, artist, release date, and duration in milliseconds are returned.</p>
+    <h3>Testing the API</h3>
+    <p>As the name of the artist should be an exact match to the name in the database, I have provided a list of valid
+        artist names below. Select 1 to test the API.</p>
+    <table class="table-striped">
+        <tr>
+            <th style="padding: 10px;">Artist Name</th>
+        </tr>
+        {% for artist in artists %}
+        <tr>
+            <td style="padding: 10px;"><a href="api/tracks/artist/{{artist}}">{{artist}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

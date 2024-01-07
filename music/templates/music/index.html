@@ -1,0 +1,44 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Spotify Music Playlist Application with Django">
+    <meta name="keywords" content="Spotify, Playlist, Tracks, Django, API">
+    <meta name="author" content="Shamie Jegan">
+    {% bootstrap_css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/music.css">
+
+</head>
+
+<body>
+    <h1><a href="/"><img src="../static/images/spotify.png" id="logo"
+                alt="Spotify logo by Pixel perfect, Flaticon"></a><a href="/">Spotify Music
+            Playlist REST APIs</h1></a>
+    <div class="row">
+        <div class="col-4">
+            <h2>Features</h2>
+            <div class="api-items" onclick="window.location.href='/artists';" style="cursor: pointer;">
+                <a href="/artists">Get tracks released by a specific artist</a>
+            </div>
+            <div class="api-items" onclick="window.location.href='/dance';" style="cursor: pointer;">
+                <a href="/dance">Get the most danceable tracks </a>
+            </div>
+            <div class="api-items" onclick="window.location.href='/wordy';" style="cursor: pointer;">
+                <a href="/wordy">Get tracks with the most speech in it</a>
+            </div>
+            <div class="api-items" onclick="window.location.href='/create_playlist/';" style="cursor: pointer;">
+                <a href="/create_playlist/">Post a new playlist</a>
+            </div>
+            <div class="api-items" onclick="window.location.href='/playlists';" style="cursor: pointer;">
+                <a href="/playlists">Get & Post tracks within a specified playlist</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <!-- this section will by dynamically loaded based on the feature selected -->
+            {% block content %}<h2>Please select a feature to begin</h2>{% endblock %}
+        </div>
+    </div>
+</body>

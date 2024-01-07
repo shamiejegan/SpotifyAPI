@@ -1,0 +1,24 @@
+{% extends "./index.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Get the most danceable tracks</h2>
+<div class='feature_details'>
+    <h3>API Structure</h3>
+    <p><strong>GET api/tracks/dance/[n]</strong></p>
+    <h3>About the API</h3>
+    <p>Danceability is a measure quantifying how danceable a track is based on a combination of musical elements
+        including tempo, rhythm stability, beat strength, and overall regularity. It ranges from a value of 0.0 (least
+        danceable) to 1.0 (most danceable). This API ranks all tracks based on its danceability metric, and returns the
+        n most danceable tracks. The track's name, artist, release date, and duration in milliseconds are
+        returned.
+    </p>
+    <h3>Testing the API</h3>
+    <p>Please enter the number of danceable tracks you would like to get:</p>
+    <form action="/dance" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Find Danceable Tracks">
+    </form>
+</div>
+{% endblock %}

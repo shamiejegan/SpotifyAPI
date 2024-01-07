@@ -1,0 +1,35 @@
+{% extends "./index.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Post a new playlist</h2>
+<div class='feature_details'>
+    <h3>API Structure</h3>
+    <p><strong>POST /api/playlists</strong></p>
+    <h3>About the API</h3>
+    <p>This API creates a new entry to the database based on the user's input of the playlist name. The playlist_id primary key is automatically generated. </p>
+    <h3>Testing the API</h3>
+    <p>Fill in and submit the form. You should see the new playlist you created added to the table below after submitting the form. </p>
+    <form action="/create_playlist/" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Add Playlist">
+    </form>
+    <hr>
+    <p>Refer to the table below to check if the playlist you added has been updated.</p>
+    <table class="table-striped">
+        <tr>
+            <th style="padding: 10px;">Playlist Name</th>
+            <th style="padding: 10px;">Genre</th>
+        </tr>
+        {% for playlist in playlists %}
+        <tr>
+            <td style="padding: 10px;">{{playlist.name}}</td>
+            <td style="padding: 10px;">{{playlist.genre}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

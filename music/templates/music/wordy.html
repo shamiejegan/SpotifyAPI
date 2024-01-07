@@ -1,0 +1,21 @@
+{% extends "./index.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>Get tracks with the most speech in it</h2>
+<div class='feature_details'>
+    <h3>API Structure</h3>
+    <p><strong>GET api/tracks/wordy/[n]</strong></p>
+    <h3>About the API</h3>
+    <p>This API ranks all tracks based on its wordiness metric, and returns the n most wordy tracks. Wordiness is a
+        measure quantifying the presence of spoken words in the track. Typically, values above 0.33 indicate tracks with
+        more speech in it. This includes both music and speech (including rap music). The track's name, artist, release date, and duration in milliseconds are returned.</p>
+        <h3>Testing the API</h3>
+        <p>Please enter the number of wordy tracks you would like to get:</p>
+        <form action="/wordy" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="Find Wordy Tracks">
+        </form>
+    </div>
+{% endblock %}
